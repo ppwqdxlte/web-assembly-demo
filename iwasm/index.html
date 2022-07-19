@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script type="module">
-import { add,minusOne } from "./build/release.js";
-document.body.innerText = add(5, 5)+'\t' +
-    minusOne(100);
-</script>
+    <script type="module">
+        import {add, minusOne} from "./build/release.js";
+        document.getElementById('ope').innerText = add(5, 5) + '\t' +
+            minusOne(100);
+    </script>
+    <!--自己实现WebAssembly实例化.wasm文件流的加载器-->
+    <script src="./js/loader.js"></script>
+    <script>
+        const WL = new WasmLoader();
+        WL.wasm('./build/release.wasm')
+            .then(instance =>{
+                const { add,minusOne } = instance;
+                document.getElementById("wlope").innerText=add(50,50)+minusOne(1001)
+            })
+    </script>
 </head>
-<body></body>
+<body>
+<div id="ope"></div>
+<div id="wlope"></div>
+</body>
 </html>
