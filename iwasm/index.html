@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
 <script type="module">
-import { add } from "./build/release.js";
-document.body.innerText = add(5, 5);
+import { add,minusOne } from "./build/release.js";
+document.body.innerText = add(5, 5)+'\t' +
+    minusOne(100);
 </script>
 </head>
 <body></body>
